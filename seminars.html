@@ -1,0 +1,73 @@
+<html>
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="mycss.css">
+
+</head>
+
+<body ng-app="myApp">
+
+
+
+<div id="100" ng-controller="Controller" ng-init="index=0">
+<!-- abstract fade -->
+<div id="fade" class="black_overlay" ng-show="aaa"></div>
+
+
+
+<div id="main">
+  <div id="nav">
+  <a href ="/~pablos/research.html">Research</a>|
+  <a href ="/~pablos/seminars.html">Seminars</a>|
+  <a href ="/~pablos/index.html">Home</a>
+</div>
+<p>
+  AG seminar:<button ng-click="index=0">Fall 2015</button>
+              <button ng-click="index=1">Spring 2015</button>
+              <button ng-click="index=2">Winter 2015</button>
+              <button ng-click="index=3">Fall 2014</button>
+               <br>
+  Learning seminar:<button ng-click="index=4">Fall 2015</button>
+              <button ng-click="index=5">Winter 2015</button>
+              <button ng-click="index=6">Fall 2014</button><br>
+</p>
+<div id="title">{{seminars[index].type}} Seminar<br> {{seminars[index].quarter}} {{seminars[index].year}}</div>
+
+
+<!-- table of speakers -->
+<table>
+  <tr ng-repeat="speaker in seminars[index].speakers">
+    <td width="20%">{{speaker.date|date}}</td>
+    <td>
+      <table><tr><td>{{speaker.name}}<br>{{speaker.school}}</td></tr>
+        <tr><td><i>{{speaker.title}}</i></td></tr></table>
+    </td>
+    <td><button ng-click="hack(speaker.title,speaker.name,speaker.abs)">Abstract</button></td>
+  </tr>
+</table>
+
+<!-- abstract -->
+<div id="light" class="white_content" ng-show="aaa">
+  <i>{{htitle}}</i><br>
+  {{hperson}}
+  <br><br>
+{{habs}}<br>
+<button ng-click="aaa = false">Close</button>
+  </div>
+<!-- end abstract -->
+
+
+
+
+  </div>
+
+</div>
+
+
+
+    <script src="AngApp.js"></script>
+
+
+    <script src="Controller.js"></script>
+  </body>
+  </html>
